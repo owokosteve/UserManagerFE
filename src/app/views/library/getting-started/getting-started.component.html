@@ -1,0 +1,19 @@
+<div class="p2 flex flex-column g1">
+  <div class="content-wrapper" *ngIf="!isLoading && !error">
+    <div class="markdown-content" [innerHTML]="markdownContent"></div>
+  </div>
+
+  <div class="flex items-center justify-center" style="height: 200px;" *ngIf="isLoading">
+    <div>
+      <p class="tcSecondaryText font-14">Loading Getting Started content...</p>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center" style="height: 200px;" *ngIf="error">
+    <div class="text-align-center flex flex-column g1">
+      <h3 class="tcError">Error Loading Content</h3>
+      <p class="tcError">{{ error }}</p>
+      <p class="tcSecondaryText">Make sure the README.md file is accessible.</p>
+    </div>
+  </div>
+</div>

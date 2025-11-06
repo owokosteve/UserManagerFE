@@ -1,0 +1,6 @@
+<div class="e-input-group e-search">
+    <input class="e-input e-search" type="text" (focus)="focusIn($event.target)" [(ngModel)]="input"
+           placeholder="Search" (blur)="focusOut($event.target)" (input)="search()" autocomplete="off" />
+    <span class="e-input-group-icon e-icons e-clear-icon" [style.visibility]="input != '' ? 'visible' : 'hidden'" (click)="clear()"></span>
+    <span class="e-input-group-icon e-icons e-search width-auto"></span>
+</div>

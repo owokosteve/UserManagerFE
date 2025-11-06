@@ -1,0 +1,88 @@
+<div class="flex h-100 g1">
+
+  <ng-container *ngTemplateOutlet="leftPanel"></ng-container>
+  <ng-container *ngTemplateOutlet="centerPanel"></ng-container>
+  <ng-container *ngTemplateOutlet="rightPanel"></ng-container>
+</div>
+
+
+
+<ng-template #leftPanel>
+  <div class="flex-column flex g1 p2 box-sizing overflow-auto h-100 hide_scrollbar glass panels">
+    <app-ej-search (searchValue)="searchFullLibray($event)"> </app-ej-search>
+    <div class="wd-100 h-100">
+      <ejs-listview id='sample-list' [dataSource]='viewResult' [cssClass]='cssClass' [showHeader]='false' (select)="treeView($event)">
+      </ejs-listview>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #rightPanel>
+  <div class="flex-column flex g1 p2 box-sizing overflow-auto h-100 hide_scrollbar glass panels">
+    <p> On this page </p>
+    <app-ej-search (searchValue)="searchSelectedLibrary($event)"> </app-ej-search>   
+  </div>
+</ng-template>
+
+
+<ng-template #centerPanel>
+  <div class="flex-auto glass h-100">
+    <ejs-tab id="element" heightAdjustMode='Fill'>
+      <e-tabitems>
+        <e-tabitem>
+          <ng-template #headerText>
+            <div>
+              Getting Started
+            </div>
+          </ng-template>
+          <ng-template #content>
+            <div class="vertical-scroll-on-overflow h-100 hide_scrollbar">
+              <app-getting-started></app-getting-started>
+            </div>
+          </ng-template>
+        </e-tabitem>
+
+        <e-tabitem>
+          <ng-template #headerText>
+            <div>
+              APIs
+            </div>
+          </ng-template>
+          <ng-template #content>
+            <div class="vertical-scroll-on-overflow h-100 hide_scrollbar">
+              <app-apis></app-apis>
+            </div>            
+          </ng-template>
+        </e-tabitem>
+
+        <e-tabitem>
+          <ng-template #headerText>
+            <div>
+              Methods
+            </div>
+          </ng-template>
+          <ng-template #content>
+            <div class="vertical-scroll-on-overflow h-100 hide_scrollbar">
+              <app-methods></app-methods>
+            </div>
+          </ng-template>
+        </e-tabitem>
+
+        <e-tabitem>
+          <ng-template #headerText>
+            <div>
+              Models
+            </div>
+          </ng-template>
+          <ng-template #content>
+            <div class="vertical-scroll-on-overflow h-100 hide_scrollbar">
+              <app-models></app-models>
+            </div>
+          </ng-template>
+        </e-tabitem>
+      </e-tabitems>
+      </ejs-tab>
+
+  </div>
+</ng-template>
+

@@ -1,0 +1,71 @@
+<div class="p2 flex flex-column g1">
+  <div>
+    <h2 class="tcBrand">API Endpoints</h2>
+    <div class="flex flex-wrap items-center g2">
+      <app-ej-search (searchValue)="onSearch($event)"> </app-ej-search>
+      <ejs-dropdownlist [dataSource]='controllers' [value]="selectedController" cssClass="e-bigger" (select)="onControllerSelect($event)" [allowFiltering]='true' [showClearButton]=true [filterType]="filterType"></ejs-dropdownlist>
+    </div>
+  </div>
+
+  <div class="content-wrapper" *ngIf="!isLoading && !error">
+    <div class="endpoints-list flex flex-column g1" *ngIf="filteredEndpoints.length > 0">
+      <div class="endpoint-card bcPrimary border rounded p2" *ngFor="let endpoint of filteredEndpoints">
+        <div class="endpoint-header flex items-center flex-wrap g2">
+          <span class="http-method p1 rounded font-600" [ngClass]="getHttpMethodClass(endpoint.httpMethod)">
+            {{ endpoint.httpMethod }}
+          </span>
+          <span class="endpoint-route bcSecondary p1 rounded flex-auto font-14">{{ endpoint.route }}</span>
+          <span class="controller-name bcAlternate p1 rounded font-12 tcSecondaryText">{{ endpoint.controller }}</span>
+        </div>
+        
+        <div class="endpoint-details flex flex-column g2">
+          <h4 class="tcPrimaryText font-18">{{ endpoint.method }}</h4>
+          <p *ngIf="endpoint.description" class="description tcSecondaryText font-14">{{ endpoint.description }}</p>
+          
+          <div class="parameters" *ngIf="endpoint.parameters.length > 0">
+            <h5 class="tcPrimaryText font-14 font-600">Parameters:</h5>
+            <div class="parameter-list flex flex-column g1">
+              <div class="parameter bcSecondary border-left border-brand p1 rounded flex flex-wrap items-center g1" *ngFor="let param of endpoint.parameters">
+                <span class="param-name font-600 tcPrimaryText">{{ param.name }}</span>
+                <span class="param-type tcError font-12 bcPrimary p1 rounded">{{ param.type }}</span>
+                <span class="param-source tcInfo font-11 bcTertiary p1 rounded">{{ param.source }}</span>
+                <span class="param-optional tcSecondaryText font-11" *ngIf="param.isOptional">(optional)</span>
+                <p *ngIf="param.description" class="param-description tcSecondaryText font-12 w-100">{{ param.description }}</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="return-type">
+            <h5 class="tcPrimaryText font-14 font-600">Returns:</h5>
+            <span class="return-type-value tcError bcSecondary p1 rounded font-14">{{ endpoint.returnType }}</span>
+          </div>
+          
+          <div class="examples flex flex-column g1" *ngIf="endpoint.examples && endpoint.examples.length > 0">
+            <h5 class="tcPrimaryText font-14 font-600">Examples:</h5>
+            <div class="example" *ngFor="let example of endpoint.examples">
+              <pre class="bcSecondary border rounded p2 overflow-x-auto"><code class="font-13">{{ example }}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="no-results text-align-center p4" *ngIf="filteredEndpoints.length === 0">
+      <p class="tcSecondaryText">No API endpoints found matching your criteria.</p>
+    </div>
+  </div>
+  
+  <div class="loading-wrapper flex items-center justify-center" *ngIf="isLoading">
+    <div class="loading-spinner">
+      <p class="tcSecondaryText">Loading API endpoints...</p>
+    </div>
+  </div>
+  
+  <div class="error-wrapper flex items-center justify-center" *ngIf="error">
+    <div class="error-message text-align-center flex flex-column g1">
+      <h3 class="tcError">Error Loading APIs</h3>
+      <p class="tcError">{{ error }}</p>
+      <p class="tcSecondaryText">Make sure the service is running and accessible.</p>
+    </div>
+  </div>
+</div>

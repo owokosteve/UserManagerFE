@@ -1,0 +1,8 @@
+<div class="">
+    <p class="tc2 font-16 font-500" *ngIf="childName != ''"> {{childName}} </p>
+    <ejs-breadcrumb [enableNavigation]='true' (itemClick)="bgEvent($event)" *ngIf="navigationTree.length > 0">
+        <e-breadcrumb-items>
+            <e-breadcrumb-item *ngFor="let navItem of navigationTree;" text='{{navItem}}'></e-breadcrumb-item>
+        </e-breadcrumb-items>
+    </ejs-breadcrumb>
+</div>

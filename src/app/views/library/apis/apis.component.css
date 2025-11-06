@@ -1,0 +1,31 @@
+/* Only CSS for dynamic classes that can't be handled by basscss utility classes */
+
+.method-get { 
+  background-color: var(--color-sf-success) !important; 
+  color: white !important; 
+}
+
+.method-post { 
+  background-color: var(--color-sf-info) !important; 
+  color: white !important; 
+}
+
+.method-put { 
+  background-color: var(--color-sf-warning) !important; 
+  color: white !important; 
+}
+
+.method-delete { 
+  background-color: var(--color-sf-danger) !important; 
+  color: white !important; 
+}
+
+.method-patch { 
+  background-color: var(--color-sf-primary) !important; 
+  color: white !important; 
+}
+
+.method-default { 
+  background-color: var(--color-sf-content-bg-color-alt2) !important; 
+  color: var(--color-sf-content-text-color) !important; 
+}

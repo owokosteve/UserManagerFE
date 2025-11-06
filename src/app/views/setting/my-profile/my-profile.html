@@ -1,0 +1,48 @@
+<div class="p2 flex flex-column g1 my-profile">
+    <h2 class="tcSecondaryText">Profile Information</h2>
+    <p class="bcPrimary">Manage your personal details and preferences</p>
+    <br>
+    <form [formGroup]="profileForm">
+        <div class="flex flex-wrap items-center g2">
+            <div class="flex-auto">
+                <label for="firstName">First Name </label>
+                <ejs-textbox formControlName="firstName"></ejs-textbox>
+            </div>
+            <div class="flex-auto">
+                <label for="lastName">Last Name </label>
+                <ejs-textbox formControlName="lastName"></ejs-textbox>
+            </div>
+        </div>
+        <br>
+        <div>
+            <label for="role">Role</label>
+            <ejs-dropdownlist [dataSource]="roles" formControlName="role"></ejs-dropdownlist>
+        </div>
+        <br>
+        <div>
+            <label for="email">Email Address</label>
+            <ejs-textbox type="email" readonly="" formControlName="email"></ejs-textbox>
+        </div>
+        <div class="flex justify-end mt3">
+            <ejs-splitbutton ejs-button class="mr1">Cancel</ejs-splitbutton>
+            <ejs-splitbutton ejs-button isPrimary="true">Update</ejs-splitbutton>
+        </div>
+    </form>
+    <br>
+    <div>
+        <h2 class="tcSecondaryText">Integration</h2>
+        <p>Sync your code and manage your project efficiently</p>
+        <i class="bi bi-github"></i>
+        <div>
+            
+        </div>
+    </div>
+    <br>
+    <div>
+        <h2 class="tcSecondaryText">Appearance</h2>
+        <p>Choose your prefered theme</p>
+        <ejs-dropdownlist [dataSource]="themes" value="Light"></ejs-dropdownlist>
+    </div>
+</div>
+
+<!-- https://ej2.syncfusion.com/angular/documentation/dialog/getting-started -->

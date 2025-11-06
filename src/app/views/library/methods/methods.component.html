@@ -1,0 +1,88 @@
+<div class="p2 flex flex-column g1">
+  <div>
+    <h2 class="tcBrand">Service Methods</h2>
+    <div class="flex flex-wrap items-center g2">
+      <app-ej-search (searchValue)="onSearch($event)"> </app-ej-search>
+      <!--<ejs-dropdownlist [htmlAttributes]="{name:filter.NameAttribute}" [dataSource]='filter.Datasource' [placeholder]='localWaterMark' [value]="filter.Value" cssClass="e-bigger" (select)="handleValueChange($event, filter)" [allowFiltering]='true' [showClearButton]=true [filterType]="filterType"></ejs-dropdownlist>-->
+      <ejs-dropdownlist [dataSource]='classes' [value]="selectedClass" cssClass="e-bigger" (select)="onClassChange($event)" [allowFiltering]='true' [showClearButton]=true [filterType]="filterType"></ejs-dropdownlist>
+      <ejs-dropdownlist [dataSource]='accessibilityLevels' [value]="selectedAccessibility" cssClass="e-bigger" (select)="onAccessibilityChange($event)" [allowFiltering]='true' [showClearButton]=true [filterType]="filterType"></ejs-dropdownlist>
+    </div>
+  </div>
+
+
+  <div *ngIf="!isLoading && !error">
+    <div class="flex flex-column g3" *ngIf="filteredMethods.length > 0">
+      <div class="bcPrimary border rounded p2" *ngFor="let method of filteredMethods">
+        <div class="flex items-center flex-wrap g2">
+          <span class="p1 rounded font-600 font-12 uppercase"
+                [ngClass]="getAccessibilityClass(method.accessibility)">
+            {{ method.accessibility }}
+          </span>
+          <span class="tcBrand font-600 bcSecondary p1 rounded">{{ method.className }}</span>
+          <div class="flex g1">
+            <span class="bcTertiary tcPrimaryText p1 rounded font-11 font-600" *ngIf="method.isStatic">static</span>
+            <span class="bcTertiary tcPrimaryText p1 rounded font-11 font-600" *ngIf="method.isAsync">async</span>
+          </div>
+        </div>
+
+        <div class="flex flex-column g2">
+          <h4 class="tcPrimaryText font-18">{{ method.name }}</h4>
+          <p *ngIf="method.description" class="tcSecondaryText font-14">{{ method.description }}</p>
+
+          <div class="flex flex-column g1">
+            <h5 class="tcPrimaryText font-14 font-600">Signature:</h5>
+            <code class="bcSecondary border p1 rounded block overflow-x-auto font-14">{{ getMethodSignature(method) }}</code>
+          </div>
+
+          <div class="flex flex-column g1">
+            <h5 class="tcPrimaryText font-14 font-600">Namespace:</h5>
+            <span class="tcSecondaryText bcSecondary p1 rounded font-14">{{ method.namespace }}</span>
+          </div>
+
+          <div *ngIf="method.parameters.length > 0" class="flex flex-column g1">
+            <h5 class="tcPrimaryText font-14 font-600">Parameters:</h5>
+            <div class="flex flex-column g1">
+              <div class="bcSecondary border-left border-brand p1 rounded flex flex-wrap items-center g1" *ngFor="let param of method.parameters">
+                <span class="font-600 tcPrimaryText">{{ param.name }}</span>
+                <span class="tcError font-12 bcPrimary p1 rounded">{{ param.type }}</span>
+                <span class="tcSecondaryText font-11" *ngIf="param.isOptional">(optional)</span>
+                <span class="tcWarning font-11 bcTertiary p1 rounded" *ngIf="param.defaultValue">default: {{ param.defaultValue }}</span>
+                <p *ngIf="param.description" class="tcSecondaryText font-12 w-100">{{ param.description }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-column g1">
+            <h5 class="tcPrimaryText font-14 font-600">Returns:</h5>
+            <span class="tcError bcSecondary p1 rounded font-14">{{ method.returnType }}</span>
+          </div>
+
+          <div *ngIf="method.examples && method.examples.length > 0" class="flex flex-column g1">
+            <h5 class="tcPrimaryText font-14 font-600">Examples:</h5>
+            <div class="flex flex-column g1" *ngFor="let example of method.examples">
+              <pre class="bcSecondary border rounded p2 overflow-x-auto"><code class="font-13">{{ example }}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-align-center p4" *ngIf="filteredMethods.length === 0">
+      <p class="tcSecondaryText">No methods found matching your criteria.</p>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center" style="height: 200px;" *ngIf="isLoading">
+    <div>
+      <p class="tcSecondaryText">Loading service methods...</p>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center" style="height: 200px;" *ngIf="error">
+    <div class="text-align-center flex flex-column g1">
+      <h3 class="tcError">Error Loading Methods</h3>
+      <p class="tcError">{{ error }}</p>
+      <p class="tcSecondaryText">Make sure the service documentation is available.</p>
+    </div>
+  </div>
+</div>

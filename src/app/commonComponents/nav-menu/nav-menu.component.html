@@ -1,0 +1,11 @@
+<div class="nav-bar flex-column glass">
+    <div class="lh-18 flex bar-con m1 p2 br8" *ngFor="let menu of navMenus" (click)="navigateTo(menu.RedirectLink)" [class.bcBrand]="menu.IsActive">
+        <ejs-tooltip content="{{menu.Name}}" [enableHtmlSanitizer]="true" [enableHtmlParse]="false">
+            <a [href]="menu.RedirectLink" (click)="stayDefault($event)">
+                <div class="flex items-center">
+                    <span [class]="menu.IconClass + ' font-24 e-icons tcPrimaryText'"></span>
+                </div>
+            </a>
+        </ejs-tooltip>
+    </div>
+</div>

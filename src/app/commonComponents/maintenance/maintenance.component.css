@@ -1,0 +1,46 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+}
+.maintenance-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.font-24 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.font-20 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.font-20 {
+    font-size: 20px;
+}
+
+.font-700 {
+    font-weight: 700;
+}
+
+.no-margin {
+    margin: 0;
+}

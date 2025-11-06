@@ -1,0 +1,53 @@
+<div class="workspace"
+     #workspace
+     (mousemove)="onMouseMove($event)"
+     (mouseup)="onMouseUp($event)"
+     (wheel)="onWheel($event)">
+  <div class="content"
+       [style.transform]="'scale(' + zoom + ')'"
+       [style.transformOrigin]="'top left'">
+    <div *ngFor="let box of boxes"
+         class="box"
+         [style.left.px]="box.x"
+         [style.top.px]="box.y"
+         (mousedown)="onMouseDown(box, $event)">
+      <span class="box-label">{{ box.label }}</span>
+      <div class="left-rect"></div>
+      <div class="right-circle"
+           (mousedown)="onCircleMouseDown(box, $event)"></div>
+    </div>
+  </div>
+
+  <svg class="svg-overlay"
+       [attr.width]="contentSize * zoom"
+       [attr.height]="contentSize * zoom"
+       style="position: absolute; left: 0; top: 0; pointer-events: none;">
+    <!-- Existing connections -->
+    <line *ngFor="let conn of connections"
+          [attr.x1]="getConnectionPoints(conn).x1"
+          [attr.y1]="getConnectionPoints(conn).y1"
+          [attr.x2]="getConnectionPoints(conn).x2"
+          [attr.y2]="getConnectionPoints(conn).y2"
+          stroke="#1976d2"
+          stroke-width="3"
+          marker-end="url(#arrowhead)" />
+
+    <!-- Temporary drag line -->
+    <line *ngIf="isConnecting"
+          [attr.x1]="tempLine.x1"
+          [attr.y1]="tempLine.y1"
+          [attr.x2]="tempLine.x2"
+          [attr.y2]="tempLine.y2"
+          stroke="#d32f2f"
+          stroke-width="2"
+          stroke-dasharray="4,2" />
+
+    <!-- Optional arrowhead marker -->
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5"
+              orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#1976d2" />
+      </marker>
+    </defs>
+  </svg>
+</div>

@@ -1,0 +1,98 @@
+/* Getting Started Component using project design system */
+
+.getting-started-container {
+  height: 100%;
+}
+
+.content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.markdown-content {
+  line-height: 1.6;
+}
+
+.markdown-content h1 {
+  color: var(--color-sf-primary);
+  margin-bottom: var(--gap-3);
+  padding-bottom: var(--gap-1);
+  border-bottom: 2px solid var(--color-sf-primary);
+}
+
+.markdown-content h2 {
+  color: var(--color-sf-content-text-color);
+  margin-top: var(--gap-3);
+  margin-bottom: var(--gap-2);
+}
+
+.markdown-content h3 {
+  color: var(--color-sf-content-text-color-alt1);
+  margin-top: var(--gap-2);
+  margin-bottom: var(--gap-1);
+}
+
+.markdown-content pre {
+  background-color: var(--color-sf-content-bg-color-alt1);
+  border: 1px solid var(--color-sf-border);
+  border-radius: 4px;
+  padding: var(--gap-2);
+  overflow-x: auto;
+  margin: var(--gap-2) 0;
+}
+
+.markdown-content code {
+  background-color: var(--color-sf-content-bg-color-alt1);
+  border: 1px solid var(--color-sf-border);
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.markdown-content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.markdown-content a {
+  color: var(--color-sf-primary);
+  text-decoration: none;
+}
+
+.markdown-content a:hover {
+  text-decoration: underline;
+}
+
+.loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.loading-spinner p {
+  color: var(--color-sf-content-text-color-alt2);
+  font-style: italic;
+}
+
+.error-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.error-message {
+  text-align: center;
+  color: var(--color-sf-danger);
+}
+
+.error-message h3 {
+  margin-bottom: var(--gap-1);
+}
+
+.error-message p {
+  margin: 5px 0;
+}

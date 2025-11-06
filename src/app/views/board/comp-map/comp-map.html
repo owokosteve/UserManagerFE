@@ -1,0 +1,14 @@
+<div class="flex-column p1">
+  <div class="p1">
+    <ejs-textbox placeholder="Enter Name" ></ejs-textbox>
+  </div>
+  <div class="self-stretch p1">
+    <ejs-listview id='sample-list' [dataSource]='viewResult' [showHeader]='false' (select)="listSelect($event)">
+      <ng-template #template let-viewResult="">
+        <div class="e-text-content" role="presentation">
+          <span class="e-list-text"> {{viewResult }}</span>
+        </div>
+      </ng-template>
+    </ejs-listview>
+  </div>
+</div>

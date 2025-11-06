@@ -1,0 +1,26 @@
+/* Only CSS for dynamic classes that can't be handled by basscss utility classes */
+
+.access-public { 
+  background-color: var(--color-sf-success) !important; 
+  color: white !important; 
+}
+
+.access-private { 
+  background-color: var(--color-sf-danger) !important; 
+  color: white !important; 
+}
+
+.access-protected { 
+  background-color: var(--color-sf-warning) !important; 
+  color: white !important; 
+}
+
+.access-internal { 
+  background-color: var(--color-sf-primary) !important; 
+  color: white !important; 
+}
+
+.access-default { 
+  background-color: var(--color-sf-content-bg-color-alt2) !important; 
+  color: var(--color-sf-content-text-color) !important; 
+}

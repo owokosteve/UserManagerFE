@@ -1,0 +1,26 @@
+@import "../../../styles/color.scss";
+
+.profile-back {
+    border-radius: 2rem;
+    padding: 3px;
+}
+
+.profile-text {
+    text-align: center;
+    text-transform: uppercase;
+    width: 24px;
+}
+
+.profile-tooltip {
+  &.e-popup-open {
+    background: $bg-primary !important;
+    margin-left: 40px;
+    min-width: 300px;
+    max-width: 400px;
+
+    .e-tip-content {
+        background: $bg-primary !important;
+    }
+  }
+}
+
