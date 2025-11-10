@@ -1,10 +1,11 @@
 import { Component, inject} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { CustomToast } from '../../../services/toast';
+import { ToastType } from '../../../models/enums';
 
 
 @Component({
   selector: 'app-my-profile',
-  standalone: false,
   templateUrl: './my-profile.html',
   styleUrl: './my-profile.css',
 })
@@ -13,6 +14,7 @@ export class MyProfile {
   themes: string[] = ['Light', 'Dark', 'System Default'];
   
   private formBuilder = inject(FormBuilder);
+  private toast = inject(CustomToast);
 
   dataStore = {
     firstName: "Stephen",
@@ -27,4 +29,14 @@ export class MyProfile {
     role: [this.dataStore.role],
     email: [this.dataStore.email]
   });
+
+  onUpdate(){
+    if (this.profileForm.valid){
+      console.log('Profile updated:', this.profileForm.value);
+
+      this.toast.showToast(ToastType.Success, 'Profile updated successfully!');
+    }else{
+      this.toast.showToast(ToastType.Warning, 'Please fill in all required fields!');
+    }
+  }
 }

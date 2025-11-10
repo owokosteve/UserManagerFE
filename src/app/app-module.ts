@@ -13,6 +13,7 @@ import { CustomEvents } from './services/customEvents';
 import { CustomToast } from './services/toast';
 import { RolePipe } from './services/roleService';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastContainerComponent } from './commonComponents/toast_container/toast-container.component';
 export function initCustomCss(customCssService: CustomCssService) {
   return () => customCssService.create();
 }
@@ -20,6 +21,7 @@ export function initCustomCss(customCssService: CustomCssService) {
 @NgModule({
   declarations: [
     App,
+    ToastContainerComponent,
   ],
   imports: [
     BrowserModule,

@@ -35,7 +35,7 @@ import {ProgressButtonModule} from "@syncfusion/ej2-angular-splitbuttons";
         BreadcrumbModule, SidebarModule, TabModule, TreeViewModule,
         DialogModule, TooltipModule,
         ToastModule, MessageModule,
-        ListViewModule,
+        ListViewModule
     ],
     exports: [
         DatePickerModule, DateRangePickerModule,

@@ -2,7 +2,7 @@
     <h2 class="tcSecondaryText">Profile Information</h2>
     <p class="bcPrimary">Manage your personal details and preferences</p>
     <br>
-    <form [formGroup]="profileForm">
+    <form [formGroup]="profileForm" (ngSubmit)="onUpdate()">
         <div class="flex flex-wrap items-center g2">
             <div class="flex-auto">
                 <label for="firstName">First Name </label>
@@ -25,7 +25,7 @@
         </div>
         <div class="flex justify-end mt3">
             <ejs-splitbutton ejs-button class="mr1">Cancel</ejs-splitbutton>
-            <ejs-splitbutton ejs-button isPrimary="true">Update</ejs-splitbutton>
+            <ejs-splitbutton type="submit" ejs-button isPrimary="true">Update</ejs-splitbutton>
         </div>
     </form>
     <br>
